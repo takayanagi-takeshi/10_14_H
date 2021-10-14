@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<title>はじめてのVue.js</title>
+<script src="https://unpkg.com/vue@2.5.17"></script>
+<div id="fruits-component">
+  <ol>
+    <fruits-item-name v-for="fruit in fruitsItems" :key="fruit.name" :fruits-item="fruit"></fruits-item-name>
+  </ol>
+  <!-- <item-desc v-bind:item-name='myItem'></item-desc> -->
+</div>
+
+<script>
+  Vue.component('fruits-item-name', {
+    props: {
+      fruitsItem: {
+        type: Object,
+        required: true
+      }
+    },
+    template: '<li>{{ fruitsItem.name }}</li>'
+  })
+  new Vue({
+    el: '#fruits-component',
+    data: {
+      fruitsItems: [
+        {name: '梨'},
+        {name: 'イチゴ'}
+      ]
+    }
+  })
+</script>
+
+<!-- <script src="items.js"></script> -->
